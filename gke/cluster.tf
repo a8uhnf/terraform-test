@@ -5,14 +5,20 @@ variable "cluster_name" {
 resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   zone               = "${var.region}"
-  initial_node_count = 1
+  initial_node_count = 3
   logging_service    = "none"
 
   provisioner "local-exec" {
     command = "gcloud container clusters get-credentials ${var.cluster_name} --zone ${google_container_cluster.primary.zone}"
   }
 
+  provisioner "local-exec" {
+    command = "kubectl create sa tiller -n kube-system; kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller; helm init --service-account tiller"
+  }
+
   node_config {
+    machine_type = "n1-standard-2"
+
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",

@@ -1,5 +1,5 @@
 resource "helm_release" "my_database" {
-  name  = "my_datasase"
+  name  = "my-datasase"
   chart = "stable/mariadb"
 
   set {

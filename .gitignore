@@ -13,3 +13,5 @@
 account.json
 gke/account.json
 .terraform
+*.tfstate
+*.tfstate.backup
