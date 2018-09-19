@@ -1,7 +1,3 @@
-variable "cluster_name" {
-  default = "hanifa1"
-}
-
 resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   zone               = "${var.region}"
