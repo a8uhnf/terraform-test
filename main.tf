@@ -7,6 +7,8 @@ variable "region" {}
 
 variable "cluster_name" {}
 
+variable "node_number" {}
+
 #####################################################################
 # Modules
 #####################################################################
@@ -15,6 +17,7 @@ module "gke" {
   project      = "${var.project}"
   region       = "${var.region}"
   cluster_name = "${var.cluster_name}"
+  node_number  = "${var.node_number}"
 }
 
 # module "k8s" {

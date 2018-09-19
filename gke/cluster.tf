@@ -1,8 +1,9 @@
 resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   zone               = "${var.region}"
-  initial_node_count = 3
+  initial_node_count = "${var.node_number}"
   logging_service    = "none"
+  monitoring_service = "none"
 
   provisioner "local-exec" {
     command = "gcloud container clusters get-credentials ${var.cluster_name} --zone ${google_container_cluster.primary.zone}"

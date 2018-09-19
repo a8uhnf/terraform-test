@@ -8,6 +8,10 @@ variable "project" {
 
 variable "cluster_name" {}
 
+variable "node_number" {
+  default = 3
+}
+
 provider "google" {
   credentials = "${file("account.json")}"
   project     = "${var.project}"
