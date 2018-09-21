@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-terraform.tfvars
 # Test binary, build with `go test -c`
 *.test
 
@@ -15,3 +14,4 @@ gke/account.json
 .terraform
 *.tfstate
 *.tfstate.backup
+terraform.tfvars

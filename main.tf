@@ -9,6 +9,8 @@ variable "cluster_name" {}
 
 variable "node_number" {}
 
+variable "email" {}
+
 #####################################################################
 # Modules
 #####################################################################
@@ -26,4 +28,5 @@ module "gke" {
 
 module "nginx_deploy" {
   source = "./nginx"
+  email  = "${var.email}"
 }
