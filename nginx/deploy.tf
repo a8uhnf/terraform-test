@@ -9,6 +9,17 @@ resource "helm_release" "joomla" {
   chart = "stable/joomla"
 }
 
+resource "kubernetes_service_account" "kube-lego-sa" {
+  metadata {
+    name      = "kube-lego-sa"
+    namespace = "kube-system"
+  }
+
+  provisioner "local-exec" {
+    command = "kubectl create clusterrolebinding kube-lego-bind --clusterrole=cluster-admin --serviceaccount kube-system:kube-lego-sa"
+  }
+}
+
 resource "helm_release" "kube-lego" {
   name      = "kube-lego"
   chart     = "stable/kube-lego"
@@ -22,5 +33,10 @@ resource "helm_release" "kube-lego" {
   set {
     name  = "config.LEGO_URL"
     value = "https://acme-v01.api.letsencrypt.org/directory"
+  }
+
+  set {
+    name  = "rbac.create"
+    value = "true"
   }
 }
