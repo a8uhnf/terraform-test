@@ -24,3 +24,6 @@ module "gke" {
 #   source = "./k8s"
 # }
 
+module "nginx_deploy" {
+  source = "./nginx"
+}
