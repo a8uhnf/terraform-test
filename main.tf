@@ -30,3 +30,8 @@ module "nginx_deploy" {
   source = "./nginx"
   email  = "${var.email}"
 }
+
+#module "mysql" {
+#  source = "./mysql"
+#}
+

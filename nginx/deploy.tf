@@ -4,10 +4,10 @@ resource "helm_release" "nginx" {
   namespace = "kube-system"
 }
 
-resource "helm_release" "joomla" {
-  name  = "ingress-example"
-  chart = "stable/joomla"
-}
+#resource "helm_release" "joomla" {
+#  name  = "ingress-example"
+#  chart = "stable/joomla"
+#}
 
 resource "kubernetes_service_account" "kube-lego-sa" {
   metadata {

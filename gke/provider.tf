@@ -9,7 +9,7 @@ variable "project" {
 variable "cluster_name" {}
 
 variable "node_number" {
-  default = 3
+  default = 1
 }
 
 provider "google" {
