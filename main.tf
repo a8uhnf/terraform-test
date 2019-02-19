@@ -26,9 +26,13 @@ module "gke" {
 #   source = "./k8s"
 # }
 
-module "nginx_deploy" {
-  source = "./nginx"
-  email  = "${var.email}"
+# module "nginx_deploy" {
+#   source = "./nginx"
+#   email  = "${var.email}"
+# }
+
+module "helm" {
+  source = "./helm-init"
 }
 
 #module "mysql" {
